@@ -5,10 +5,29 @@ import Header from "@/app/auth/components/header";
 import Search from "@/app/auth/components/Search";
 import SwiperTest from "@/app/auth/components/swiper";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
-export default function Home() {
+function Bedding() {
   const [currentPage, setCurrentPage] = useState(1);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const threshold = window.innerHeight * 0.5; // 화면의 절반 정도 스크롤 시 변경
+      const scrollPosition = window.scrollY;
+
+      if (scrollPosition > threshold) {
+        setCurrentPage(2);
+      } else {
+        setCurrentPage(1);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
 
   return (
     <div className="overflow-y-scroll h-screen">
@@ -26,7 +45,7 @@ export default function Home() {
         </nav>
       </div>
       <div
-        className={`page h-screen flex justify-center items-center bg-amber-50 ${
+        className={`page h-screen flex justify-center items-center bg-blue-200 ${
           currentPage === 1 ? "opacity-1" : "opacity-0"
         }`}
       >
@@ -42,7 +61,7 @@ export default function Home() {
           <h1 className="text-4xl font-bold">WHEREVER! EVERYONE!</h1>
           <p className="text-lg">S/S시즌 다양하게 전개된 3가지 라인</p>
         </div>
-        <div>
+        <div className="py-10">
           <SwiperTest />
         </div>
       </div>
@@ -51,11 +70,13 @@ export default function Home() {
           currentPage === 1 ? "opacity-1" : "opacity-0"
         }`}
       >
-        <h1 className="text-4xl font-bold">세 번째 페이지</h1>
-        <p className="text-lg">여기는 세 번째 페이지입니다.</p>
+        <h1 className="text-4xl font-bold">두 번째 페이지</h1>
+        <p className="text-lg">여기는 두 번째 페이지입니다.</p>
       </div>
 
       {/* 추가적인 페이지들도 이와 같은 방식으로 추가할 수 있습니다. */}
     </div>
   );
 }
+
+export default Bedding;

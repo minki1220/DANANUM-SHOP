@@ -1,0 +1,45 @@
+"use client";
+import { useState } from "react";
+
+export default function Category() {
+  const [hoveredIndex, setHoveredIndex] = useState(-1); // State to track which button is hovered
+
+  // CSS class names for normal and hovered states
+  const buttonClass = "text-sm font-semibold transition-colors"; // Base class
+  const hoverClass = "hover:font-bold hover:text-red-600"; // Hover class
+
+  // Array of categories with names and corresponding links
+  const categories = [
+    { name: "침구", link: "/category/bedding" },
+    { name: "마스크", link: "/category/mask" },
+    { name: "내의", link: "/underwear" },
+    { name: "장갑", link: "/gloves" },
+    { name: "양말", link: "/socks" },
+    { name: "모자", link: "/hats" },
+    { name: "보호대", link: "/protectors" },
+    { name: "기술력", link: "/technology" },
+    { name: "기능성", link: "/functionality" },
+    { name: "미디어", link: "/media" },
+    { name: "FAQ", link: "/faq" },
+  ];
+
+  return (
+    <>
+      <div className="flex gap-9 pr-80 mt-2">
+        {categories.map((category, index) => (
+          <a
+            key={index}
+            href={category.link}
+            className={`${buttonClass} ${
+              hoveredIndex === index ? hoverClass : ""
+            }`}
+            onMouseEnter={() => setHoveredIndex(index)}
+            onMouseLeave={() => setHoveredIndex(-1)}
+          >
+            {category.name}
+          </a>
+        ))}
+      </div>
+    </>
+  );
+}
