@@ -5,7 +5,6 @@ import { logIn } from "./actions";
 import Input from "../components/input";
 import { PASSWORD_MIN_LENGTH } from "@/lib/constants";
 import Button from "../components/button";
-import { getCookie } from "@/components/cookies";
 import { privateApi } from "@/api/axiosConfig";
 import axios from "axios";
 
@@ -14,7 +13,7 @@ export default function LogIn() {
 
   const test = async () => {
     try {
-      const res = await privateApi.get("user/verification");
+      const res = await privateApi.get("/user/verification");
       console.log(res.data.role);
     } catch (error) {
       if (axios.isAxiosError(error)) {
@@ -44,6 +43,7 @@ export default function LogIn() {
           minLength={PASSWORD_MIN_LENGTH}
           errors={state?.fieldErrors.userPassword}
         />
+
         <Button text="Log in" />
       </form>
       <div onClick={test}>버튼</div>

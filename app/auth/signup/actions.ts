@@ -1,6 +1,6 @@
 import { redirect } from "next/navigation";
 import { z } from "zod";
-import { privateApi, publicApi } from "@/api/axiosConfig";
+import { publicApi } from "@/api/axiosConfig";
 
 const formSchema = z
   .object({
@@ -62,7 +62,7 @@ export async function createAccount(prevState: any, formData: FormData) {
     return result.error.flatten();
   } else {
     try {
-      const signupResponse = await privateApi.post("/public/auth/signup", data);
+      const signupResponse = await publicApi.post("/public/auth/signup", data);
 
       if (signupResponse.data.success) {
         shouldRedirect = true;

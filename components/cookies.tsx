@@ -24,6 +24,6 @@ export const getCookie = () => {
 export const deleteCookie = () => {
   if (typeof document !== "undefined") {
     document.cookie =
-      "TOKEN" + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+      "AccessTOKEN" + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
   }
 };
