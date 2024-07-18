@@ -31,7 +31,6 @@ export async function logIn(prevState: any, formData: FormData) {
     const res = await publicApi.post("/public/auth/login", data);
 
     if (res.data.success) {
-      console.log(res.data);
       // 응답 헤더에서 Authorization 토큰을 추출하여 쿠키에 저장하는 부분은 응답 인터셉터에서 처리됨
       // 쿠키 설정 로직 작성
       const authorization = res.headers["authorization"];
@@ -48,7 +47,7 @@ export async function logIn(prevState: any, formData: FormData) {
   } catch (signupError) {
     console.error("Error during signup:", signupError);
   }
-  // if (shouldRedirect) {
-  //   redirect("/");
-  // }
+  if (shouldRedirect) {
+    redirect("/");
+  }
 }

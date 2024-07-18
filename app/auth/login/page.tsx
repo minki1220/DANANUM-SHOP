@@ -11,16 +11,16 @@ import axios from "axios";
 export default function LogIn() {
   const [state, dispatch] = useFormState(logIn, null);
 
-  const test = async () => {
-    try {
-      const res = await privateApi.get("/user/verification");
-      console.log(res.data.role);
-    } catch (error) {
-      if (axios.isAxiosError(error)) {
-        console.log(error.response);
-      }
-    }
-  };
+  // const test = async () => {
+  //   try {
+  //     const res = await privateApi.get("/user/verification");
+  //     console.log(res.data.role);
+  //   } catch (error) {
+  //     if (axios.isAxiosError(error)) {
+  //       console.log(error.response);
+  //     }
+  //   }
+  // };
   return (
     <div className="flex flex-col gap-10 py-8 px-6">
       <div className="flex flex-col gap-2 *:font-medium">
@@ -46,7 +46,7 @@ export default function LogIn() {
 
         <Button text="Log in" />
       </form>
-      <div onClick={test}>버튼</div>
+      {/* <div onClick={test}>버튼</div> */}
       {/* <SocialLogin /> */}
     </div>
   );

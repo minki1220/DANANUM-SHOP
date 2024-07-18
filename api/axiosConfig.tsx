@@ -43,3 +43,7 @@ privateApi.interceptors.response.use(
     return Promise.reject(error);
   }
 );
+export const setToken = (token: string) => {
+  privateApi.defaults.headers["Authorization"] = `Bearer ${token}`;
+  console.log("토큰 설정 완료");
+};

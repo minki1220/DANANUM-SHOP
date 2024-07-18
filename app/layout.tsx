@@ -4,6 +4,7 @@ import "./globals.css";
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
+import AuthCheck from "@/components/provider/authCheck";
 
 const inter = Inter({ subsets: ["latin"] });
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${inter.className} bg-white text-neutral-900`}>
+        <AuthCheck />
         {children}
         {/* <TabBar /> */}
       </body>
