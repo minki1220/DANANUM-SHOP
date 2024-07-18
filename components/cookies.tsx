@@ -1,4 +1,4 @@
-export const setCookie = (token: string) => {
+export const setCookie = (token: string, newAccessToken?: any) => {
   if (typeof document !== "undefined") {
     const expirationDate = new Date();
     expirationDate.setTime(expirationDate.getTime() + 30 * 60 * 1000);
@@ -7,7 +7,7 @@ export const setCookie = (token: string) => {
   }
 };
 
-export const getCookie = () => {
+export const getCookie = (p0?: string) => {
   if (typeof document !== "undefined") {
     const cookieName = "AccessToken" + "=";
     const cookies = document.cookie.split(";");

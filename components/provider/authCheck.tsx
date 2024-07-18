@@ -12,7 +12,7 @@ export default function AuthCheck() {
 
   useEffect(() => {
     const token = getCookie();
-    const exceptions = ["/auth/login", "/auth/signup"];
+    const exceptions = ["/auth/login", "/auth/signup", "/category/bedding"];
     const isException = exceptions.includes(pathname);
 
     const checkVerified = async () => {
@@ -23,7 +23,7 @@ export default function AuthCheck() {
           router.push("/"); // 관리자가 아닌 사용자가 admin 경로에 접근 시 리다이렉트
         }
       } else if (verifiedUser.role === "ROLE_ADMIN") {
-        const adminUrl = "/";
+        const adminUrl = "/admin";
         if (!pathname.includes(adminUrl)) {
           router.push(adminUrl);
         }

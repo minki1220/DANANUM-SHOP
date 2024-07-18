@@ -25,7 +25,6 @@ export interface VerifiedData {
 export const GetUserVerify = async (): Promise<VerifiedData> => {
   try {
     const response = await privateApi.get("/user/verification");
-    console.log(response.data);
     return response.data;
   } catch (error) {
     throw error;

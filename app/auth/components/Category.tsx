@@ -1,14 +1,14 @@
 "use client";
+import Link from "next/link";
 import { useState } from "react";
+import Search from "./Search";
 
-export default function Category() {
+export default function NavBar() {
   const [hoveredIndex, setHoveredIndex] = useState(-1); // State to track which button is hovered
 
-  // CSS class names for normal and hovered states
   const buttonClass = "text-sm font-semibold transition-colors"; // Base class
   const hoverClass = "hover:font-bold hover:text-red-600"; // Hover class
 
-  // Array of categories with names and corresponding links
   const categories = [
     { name: "침구", link: "/category/bedding" },
     { name: "마스크", link: "/category/mask" },
@@ -25,20 +25,30 @@ export default function Category() {
 
   return (
     <>
-      <div className="flex gap-9 pr-80 mt-2">
-        {categories.map((category, index) => (
-          <a
-            key={index}
-            href={category.link}
-            className={`${buttonClass} ${
-              hoveredIndex === index ? hoverClass : ""
-            }`}
-            onMouseEnter={() => setHoveredIndex(index)}
-            onMouseLeave={() => setHoveredIndex(-1)}
-          >
-            {category.name}
-          </a>
-        ))}
+      <div className="w-full sticky top-0 z-10 justify-center">
+        <nav className="flex items-center bg-white justify-between py-5 ">
+          <div className="flex pl-28">
+            <Link href="/">
+              <h1 className="text-4xl font-bold">L:DIA</h1>
+            </Link>
+          </div>
+          <div className="flex gap-9 pr-80 mt-2">
+            {categories.map((category, index) => (
+              <Link
+                key={index}
+                href={category.link}
+                className={`${buttonClass} ${
+                  hoveredIndex === index ? hoverClass : ""
+                }`}
+                onMouseEnter={() => setHoveredIndex(index)}
+                onMouseLeave={() => setHoveredIndex(-1)}
+              >
+                {category.name}
+              </Link>
+            ))}
+          </div>
+          <Search />
+        </nav>
       </div>
     </>
   );

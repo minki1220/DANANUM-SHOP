@@ -10,7 +10,6 @@ export interface UserInfo {
 export const getUserInfo = async (): Promise<UserInfo> => {
   try {
     const response = await privateApi.get("/user/info");
-    console.log(response.data.userInfo.userName);
     return response.data.userInfo;
   } catch (error) {
     throw error;
