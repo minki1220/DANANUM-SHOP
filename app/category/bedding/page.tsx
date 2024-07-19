@@ -8,8 +8,9 @@ import React, { useEffect, useState } from "react";
 //   await new Promise((resolve) => setTimeout(resolve, 10000));
 // }
 
-async function Bedding() {
+function Bedding() {
   const [currentPage, setCurrentPage] = useState(1);
+
   // const products = await getProducts();
   useEffect(() => {
     const handleScroll = () => {
